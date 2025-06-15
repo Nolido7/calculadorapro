@@ -12,6 +12,16 @@
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
+
+        /* * A MÁGICA DA RESPONSIVIDADE:
+         * Esta regra faz com que o tamanho da fonte base (e todos os elementos que usam 'rem' no Tailwind)
+         * se ajuste de acordo com a largura da tela.
+         * clamp(min, preferido, max) garante que o tamanho não fique nem muito pequeno, nem muito grande.
+        */
+        html {
+            font-size: clamp(14px, 2.5vw, 24px);
+        }
+
         /* Efeito de botão pressionado */
         .btn-press {
             transition: transform 0.1s ease, box-shadow 0.1s ease;
@@ -45,15 +55,16 @@
         }
     </style>
 </head>
-<body class="bg-gray-900 flex items-center justify-center min-h-screen noselect p-4">
+<body class="bg-gray-900 flex items-center justify-center min-h-screen noselect p-2 sm:p-4">
 
-    <div class="w-full max-w-sm mx-auto space-y-6">
+    <!-- O container principal agora tem um max-width maior em 'rem' para escalar com a fonte base -->
+    <div class="w-full max-w-[28rem] mx-auto space-y-4">
 
         <!-- Gemini Feature: Word Problem Solver -->
-        <div class="bg-gray-800 rounded-2xl shadow-2xl p-6 space-y-4">
+        <div class="bg-gray-800 rounded-2xl shadow-2xl p-4 space-y-3">
             <h2 class="text-white text-xl font-bold text-center">Calculadora com IA ✨</h2>
             <p class="text-gray-400 text-center text-sm">Descreva um problema matemático e a IA irá resolvê-lo.</p>
-            <textarea id="wordProblemInput" class="w-full bg-gray-900 text-white rounded-lg p-3 h-24 resize-none focus:ring-2 focus:ring-purple-500 focus:outline-none" placeholder="Ex: Se eu tenho 5 maçãs e compro mais 3, quantas maçãs eu tenho?"></textarea>
+            <textarea id="wordProblemInput" class="w-full bg-gray-900 text-white rounded-lg p-3 h-24 resize-none focus:ring-2 focus:ring-purple-500 focus:outline-none text-base" placeholder="Ex: Se eu tenho 5 maçãs e compro mais 3, quantas maçãs eu tenho?"></textarea>
             <button id="solveWordProblemBtn" class="w-full btn bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-lg text-lg transition-all duration-150 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed">
                 <span id="solveBtnText">Resolver com IA</span>
                 <!-- Loading spinner para o botão de resolver -->
@@ -67,7 +78,7 @@
 
 
         <!-- Calculadora Principal -->
-        <div class="w-full bg-gray-800 rounded-2xl shadow-2xl p-6 space-y-4">
+        <div class="w-full bg-gray-800 rounded-2xl shadow-2xl p-4 space-y-3">
             <!-- Tela da Calculadora -->
             <div class="bg-gray-900 text-white text-right rounded-lg p-4 min-h-[6rem] flex flex-col justify-end">
                 <div id="history" class="text-gray-400 text-lg break-words"></div>
@@ -88,7 +99,7 @@
 
 
             <!-- Botões da Calculadora (Grid Principal) -->
-            <div class="grid grid-cols-4 gap-3">
+            <div class="grid grid-cols-4 gap-2 sm:gap-3">
                 <button onclick="clearAll()" class="btn bg-red-500 hover:bg-red-600 text-white font-bold py-4 rounded-lg text-xl">AC</button>
                 <button onclick="backspace()" class="btn bg-gray-600 hover:bg-gray-700 text-white font-bold py-4 rounded-lg text-xl">C</button>
                 <button onclick="appendCharacter('%')" class="btn bg-gray-600 hover:bg-gray-700 text-white font-bold py-4 rounded-lg text-xl">%</button>
@@ -121,7 +132,7 @@
         </div>
 
         <!-- Créditos -->
-        <p class="text-center text-gray-500 text-sm">Criado por Max Odilon</p>
+        <p class="text-center text-gray-500 text-xs sm:text-sm">Criado por Max Odilon</p>
 
     </div>
 
@@ -366,4 +377,3 @@
 
     </script>
 </body>
-</html>
