@@ -253,7 +253,7 @@
             spinner.classList.remove('hidden');
             geminiError.classList.add('hidden');
 
-            const apiKey = ""; // A chave será fornecida pelo ambiente
+            const apiKey = "AIzaSyBDuHdVvr0nSLfiv1W2TzgvsePWzlaynF8"; // A chave será fornecida pelo ambiente
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
             
             const payload = { contents: [{ parts: [{ text: prompt }] }] };
